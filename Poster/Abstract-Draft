@@ -1,0 +1,21 @@
+Uni-Review 
+Charles Thomson, Howie Burroughs, Kalvin Kataria, Finlay Monblat
+Supervised by: Supervisor Name
+
+Project description 
+We aim to create an application that acts as a platform to allow current students and alumni to give detailed hands on reviews of 
+a university based on factors that are not covered in a university’s promotions. Additional tools will be given to the user, such 
+as live chat rooms for discussions with current students, on matters such as courses and facilities, to a comment-based system on 
+each review. with the aim to provide a new student with as much real-world information as possible so they can make a truly informed 
+decision about where to go to start their path into higher education.
+The application will be cross platform (Android and IOS) and will be written in a non-native language to application development. 
+
+Project description (150 words)
+Results
+We have produced the application in python and have then used Buildozer to make the conversions necessary to allow the application 
+to run on Android and IOS. Kivy, and a subset of Kivy (KivyMD), has been used to create a working UI that allows a user to navigate
+through several pages relating to each university. 
+Data is stored using a cloud-based database that can store information relating to each university along with login in credentials 
+for each user. Additional features have been implemented but are still being tested, as such they are not yet ready for deployment; 
+the live chat is accessible but currently runs on a locally hosted server and the comment-based system is in the process of being 
+implemented. 

@@ -1,0 +1,15 @@
+CO600 Project 
+Logo : https://logomakr.com/5eghUP
+The aim of the project is to create a application that allows a user to lookinto and review a unievrsity or college.
+
+Feature list:
+- Authentication 
+- University/College Finder 
+- Display page for each University/College - inc information regarding different aspects of the university 
+- Cource review 
+- Lecture Review 
+- Real time lecture chat client (Socket Based)
+
+This can be expanded upon depending upon progress 
+
+Written in Python - Using BeeWare toolkits for GUI elements at for cross platform support 

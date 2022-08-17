@@ -1,0 +1,222 @@
+Issue #1  
+Date: 3/11/19
+User: CT354
+
+Installing Toga via command line may give a sandbox error - states the installation is trying to take place out of the bounds 
+of the easyInstaller(pip)
+
+Fix - Use python version 3.7.5 as apposed to version 3.8.0 
+      The Pipenv tool can then be used to install the modules and allows for the import into the IDE (PyCharm)
+      
+cont . Same issue when trying to import using third part tool i.e anaconda 
+
+
+Issue #2
+Date: 18/11/19
+User: CT354
+
+The toga modle uses "colosseum" version 0.2.0. This can cause issues at run time when the toga module is imported into the project -
+It relates to the creation of GUI elements 
+
+Fix - use pipenv via on cmd line to uninstall the newer version and reinstall version 0.1.6
+
+-- Example --
+
+//Uninstall colosseum from the current project(untitled3(
+C:\Users\Charles-PC\PycharmProjects\untitled3>pipenv run pip uninstall colosseum
+
+//reinstall the older version into the project folder usinf the pipenv tool 
+C:\Users\Charles-PC\PycharmProjects\untitled3>pipenv run pip install colosseum==0.1.6
+
+Issue #3
+Date: 19/11/19
+User: CT354
+
+Aspects of the toga dependencies are causing a run time error, i believe it relates to the module that will eventually convert the python
+code into something that can be run on IOS and Android.
+
+- Going to remove the dependencies until they are need and address the issue then. This will the project to continue until the conversion 
+  needs to take place. This does limit our ability to create a proof of concept however.
+  
+Issue #4
+Date: ** 
+User: CT354
+
+Circular imports are an issue in python, we need to plan arround them to insure it does not cause more issues further along in the project
+
+Issue #5
+Date: 19/11/19
+User: CT354
+
+There may be an issue with the Toga support for windows. Running into an error for version 0.3.0 in which there is an unsupported element
+This means that the newer elements of the tool kit are not usable 
+
+Issue 6 #
+Date: 26/11/19
+User: CT345
+
+After again trying to creat a proff of concept for the project using Toga i have run into a range of errors that requier work arounds. 
+While i have been able to work through the majority of these there are still some underliying issues due to the lack of support for 
+aspects of IOS by the toga toolkit. 
+
+I'm now looking into Kivy as a replacment as the documentation and support is far better and  at first glance there are no issues relating 
+to intergration or platform support.
+
+-- Chagning to Kivy 
+
+Issue 7 #
+Date: 03/01/20
+User: CT345
+
+Buildozer is very difficult to initally work with. I have been reading up alot and have found that the issue is due to it's suppport of 
+OS, it will only work on specific versions of Linux. 
+
+- Setting up a dual boot of Ubuntu as a work around to the issue. This does slow the prototyping process pretty significantly however. 
+
+Issue 8 #
+Date: 05/01/20
+User: CT345
+
+Pycharm doen's foramt .kv files correctly, this makes writting the front end code very difficult as python is very sensitive to spaceing an 
+indentation.
+
+- I have found a subsetting that allows for the indentation to be shown, it does not fully support other elements of python but it has made 
+  a massive improvemnt to workflow.
+  
+Issue 9 #
+Date: 08/01/20
+User: CT345
+
+Kivy can use images as button icons but the images have to be stored within the project files, this makes the files pretty big and it's 
+very sensitive to path changes ect. Made a small change to a file path and have had to reset the paths of a load of images. 
+
+ - I don't want to have to make these changes every time a path chnages ect so i'm going to ty using kivyMD, this is a imported package 
+   a libaray of images, icons ect that can be used.
+   
+Issue 10 #
+Date: 09/01/20
+User: CT345
+
+Use case issue: The anaconda package manager does not support kikyMD as is technically a beta package (not supported in due to anaconda T&C)
+                as the kivyMD package is very use full i'm going to switch over to using the base interpreter which will solve the issue.
+                
+                - This does mean that all packages will have to manually imported and set up manually but this is easier then the alternative
+                  managment of images, layouts ect ect 
+
+Issue 11 #
+Date: 09/01/20
+User: CT345
+
+The kivy styling file ("Front end") is running into a "to many levels" error due to the number of methods called by one of the UI buttons.
+
+- I have moved all the code onto a single line, this does get flagged by pycharm but i have disabled the styling guide so it still builds.
+  This does go against the python styling guid of not allowin a line to be over 79 characters, it is currently one line so i'm not ovelry worried.
+
+Issue 12 #
+Date: 13/01/20
+User: CT345
+
+The animation style of kivy only allows for a single widget (as far as i can see) to be passed to an animation method. as the nav bar wil have 
+~ 6 items this means there will be 6 open and 6 close animation methods. Currently looking for a solution but not able to find one as of yet.
+
+Issue 13 #
+Date: 17/01/20
+User: CT345
+
+The current chat client/server use a type of list to display the chat and another scrollable widget object to give the scroll functunality.
+This isn't a very elegent solution and i have just found that it is a massive drain on memory, the current solution isn't going to work 
+in the long term.
+
+- I am making large changes to the chat client and server, this will include implementing a memory friendly display window , recyclerview is 
+  looking to be the best option, as well as moving the whole system into a callable widget - not inc the server/client functions. 
+- The clinet and server funcations may need to be moved over into the main code body at some point in the future. 
+
+Issue 14 #
+Date: 03/02/20
+User: CT345
+
+Error handling of the .kv file by pycharm ives very few details about errors. Currently have a parse error - "  if current_property[:3] == 'on_':
+ TypeError: 'NoneType' object is not subscriptable". 
+ 
+- After some digging this actually means the file has a fromatting error. I think this can also be throw for a ny number of issues how ever.
+- Don't have an easy fix for this, wor flow is slowed trying to fix simple errors that would normally be displayed at run time.
+
+Note: You need to be very carful when adding to the .kv file (Front end) as a single error will crash everything and it taks a logng time 
+      to work out the errors
+      
+Issue 15 #
+Date: 03/02/20
+User: CT345
+
+- More errors to do with the .kv file and the way it's proecessed -- error:  
+
+c.center = x + value[0] * w, y + value[1] * h
+ TypeError: 'int' object is not subscriptable
+ 
+- I have found that this is to do with the way the layouts are handeled when adding custom widgets in terms on position on each screen 
+  within a screen manager. The normal dictunary of usable locations i.e center , top , bottom don't all work. 
+- Can't find any real documentation about it online so going to work around it using custom locations set in the widgets
+
+Issue 16 #
+Date: 04/02/20
+User: CT345
+
+- Issue with the float layout in kivy not allowing for images to properly be displayed and positioned. Looking for a soulution but nothing 
+  in the documentation 
+  
+Issue 17 #
+Date: 23/02/20
+User: CT345
+
+  - Attempting to change the chat client to allow for multiple chat rooms, currently unable to find a way to implement it. Very little documentation
+    online. 
+    
+  - Will need to look deeper into the issue when other app elements are completed
+
+Issue 18 #
+Date: 24/02/20
+User: CT345
+
+ - The support for KivyMD is no longer being updated, some elemtents of widgets are not documented or are documented incorrectly for the newer 
+    version of Kivy. 
+ - Some functunality has been lost after the kivy update, some widget elements are needing slight work arounds. Some good news 
+   in that new some new features are working with the older version of KivyMD
+   
+Issue 19 #
+Date: 04/03/20
+User: CT345
+
+- Push was made to master without notifiying the whole group first, some minor work duplication but some extra changes need to now be made 
+  to accomodate changes 
+  
+- Need to let everyone know when changes are being pused and what they involve 
+
+
+Issue 20 #
+Date: 09/03/20
+User: CT345
+
+- Buildozer has an issue relating to the "hand shake " between a android (May also effect IOS) devices and the main system. There is a workaround 
+  on the buildozer site but it also has a number of issues 
+  
+- I may have a work around by making changes to the hand held device to remove the need for confermation of data transfer but his isn't exactly secure
+  in the long term 
+  
+  Issue 21 #
+Date: 10/03/20
+User: CT345
+
+- I have some symptoms of covid-19 and have been told to stay home. Gnearal illness is also slowing my down in terms of work completion 
+
+ Issue 22 #
+Date: 2/04/20
+User: CT345
+
+ - VM Box has had an update and is in some way effecting the stability of buildozer. I have no idea why this is happeening and as far as i know it hsould 
+   not efffect the operation of the application in the VM in anyway 
+   
+ - I'm currenlty looking for any other erason why there would be stability issues with buildozer, i'm oing to start by checking 
+   that it's not being limied by onboard memory. If this is the case i don't have a fix as i only have this laptop to hand.
+ 
+ 
+ 

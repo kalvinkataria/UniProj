@@ -1,0 +1,118 @@
+WindowManager:
+    LoginPage:
+    RegisterPage:
+    MainPage:
+
+<LoginPage>:
+    id: main_win
+    name: "loginpage"
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+        Label:
+            text: "University Login"
+            bold: True
+            size_hint_x: 1
+    BoxLayout:
+        orientation: 'vertical'
+        padding: main_win.space_x, 170
+        #spacing: 20
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 10
+            size_hint_y: None
+            height: 80
+            TextInput:
+                hint_text: "Username"
+                multiline: False
+                id: username_ti
+            TextInput:
+                hint_text: "Password"
+                password: True
+                multiline: False
+                id: password_ti
+        Label:
+            id: sp
+            size_hint_y: None
+            height: 40
+        Button:
+            text: "Sign In"
+            size_hint_y: None
+            height: 40
+            on_release: root.validate_account(username_ti.text, password_ti.text)
+        Button:
+            text: "Don't have an account? Register"
+            size_hint_y: None
+            height: 40
+            on_release: app.root.current = "registerpage"
+        Label:
+            id: sp2
+
+<RegisterPage>:
+    id: main_win2
+    name: "registerpage"
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+        Label:
+            text: "Register Page"
+            bold: True
+            size_hint_x: 1
+    BoxLayout:
+        orientation: 'vertical'
+        padding: main_win2.space_x, 170
+        #spacing: 20
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 10
+            size_hint_y: None
+            height: 140
+            TextInput:
+                hint_text: "Username"
+                multiline: False
+                id: username_ti
+            TextInput:
+                hint_text: "Email"
+                multiline: False
+                id: email_ti
+            TextInput:
+                hint_text: "Password"
+                password: True
+                multiline: False
+                id: password_ti
+        Label:
+            id: sp
+            size_hint_y: None
+            height: 40
+        Button:
+            text: "Register"
+            size_hint_y: None
+            height: 40
+            on_release: root.register_account(username_ti.text, email_ti.text, password_ti.text)
+        Button:
+            text: "Back"
+            size_hint_y: None
+            height: 40
+            on_release: app.root.current = "loginpage"
+        Label:
+            id: sp2
+
+<MainPage>:
+    name: "mainpage"
+    orientation: "vertical"
+    Label:
+        text: "Logged in"
+        bold: True
+    Button:
+        text: "Print username."
+        size_hint_y: None
+        height: 40
+        on_release: root.print_username()
